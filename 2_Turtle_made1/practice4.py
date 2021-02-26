@@ -2,7 +2,7 @@ import turtle as t
 
 
 def circle():
-    """the turtle draws a circle """
+    """ the turtle draws a circle """
     t.width(3)
     t.color("green", "orange")
     t.begin_fill()
