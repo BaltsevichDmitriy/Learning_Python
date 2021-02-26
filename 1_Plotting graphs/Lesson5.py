@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 
 def graph4():
+    """creating two approximation curves"""
     x = [1, 2, 3, 4, 5, 6]
     y = [1, 1.1, 1.76, 2, 2.04, 2.5]
     poly = np.poly1d(np.polyfit(x, y, deg=1))
