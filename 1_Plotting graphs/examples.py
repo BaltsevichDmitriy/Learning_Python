@@ -1,8 +1,8 @@
+import numpy as np
+import matplotlib.pyplot as plt
 
 
-
-
-def graph4():
+def example4():
     x = np.arange(-1, 9, 0.02)
     plt.plot(x, x ** 2, label=r'$f= x^2$')
     plt.plot([1, 2, 8], [1, 2, 3], 'go-', label='line 1', linewidth=2)
@@ -11,5 +11,5 @@ def graph4():
     plt.legend(loc='best')
     plt.show()
 
+example4()
 
-# graph4()
