@@ -2,7 +2,6 @@ from random import randint
 import turtle
 
 window = turtle.Screen()
-window.tracer(1)
 
 
 def draw_frame(width=350, height=350):
@@ -17,12 +16,14 @@ def draw_frame(width=350, height=350):
     frame.goto(-width, -height)
     frame.goto(width, -height)
     frame.goto(width, height)
+    frame.goto(width, height)
 
 
+window.tracer(4)
 width = 300
 height = 300
-number_of_turtles = 3
-steps_of_time_number = 300
+number_of_turtles = 33
+steps_of_time_number = 600
 draw_frame(width, height)
 
 pool = [turtle.Turtle(shape='circle') for i in range(number_of_turtles)]
@@ -30,21 +31,14 @@ for unit in pool:  # создание толпы черепашек
     unit.penup()
     unit.speed(50)
     unit.goto(randint(-width, height), randint(-width, height))
+    unit.left(randint(3, 270))
 
-xy = [[0, 0, 2.3, 3.2]] * number_of_turtles
-#x_speed = 1.2
-#y_speed = 2.1
 for i in range(steps_of_time_number):
-    j = 0
     for unit in pool:
-        unit.goto(unit.xcor() + xy[j][2], unit.ycor() + xy[j][3])
-        if unit.xcor() >= width or unit.xcor() <= -width:
-            xy[j][2] = -xy[j][2]
-        if unit.ycor() >= height or unit.ycor() <= -height:
-            xy[j][3] = -xy[j][3]
-        xy[j][0] += 1
-        xy[j][1] += 1
-        print(unit.xcor(),unit.ycor())
-        print(j)
-        j += 1
-    print(xy)
+        if unit.xcor() > width or unit.xcor() < -width:
+            unit.backward(4)
+            unit.left(unit.heading() - 180)
+        if unit.ycor() > height or unit.ycor() < -height:
+            unit.backward(4)
+            unit.left(unit.heading() - 180)
+        unit.forward(2)
