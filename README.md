@@ -7,4 +7,4 @@ The tasks in Python from http://cs.mipt.ru/python
 
 [3. Turtle_made part2](https://github.com/BaltsevichDmitriy/Learning_Python/tree/main/3_Turtle_made2)
 
-[4. Creating pictures] (https://github.com/BaltsevichDmitriy/Learning_Python/tree/main/4_Creating_pictures)
+[4. Creating pictures](https://github.com/BaltsevichDmitriy/Learning_Python/tree/main/4_Creating_pictures)
