@@ -2,8 +2,8 @@ import pygame
 from pygame.draw import *
 
 FPS = 30
-width = 700
-height = 500
+width = 900
+height = 700
 dia = 400
 delta_up = height / 10
 delta_up2 = height / 10 - 10
@@ -34,8 +34,6 @@ while finished:
     second += 1
     pygame.display.set_caption('Картинка со злым смайликом открыта ' + str(int(second / 30)) + ' сек.')
     for event in pygame.event.get():
-        print(event)
         if event.type == pygame.QUIT:
             finished = False
-            # help(circle)
 pygame.quit()
