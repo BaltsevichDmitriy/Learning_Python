@@ -37,4 +37,5 @@ def angry_smiley(FPS=30, width=900, height=700, dia=400):
     pygame.quit()
 
 
+
 angry_smiley()
