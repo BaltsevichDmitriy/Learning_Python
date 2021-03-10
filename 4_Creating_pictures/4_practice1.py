@@ -5,7 +5,6 @@ from pygame.draw import *
 def angry_smiley(FPS=30, width=900, height=700, dia=400):
     x_center = width / 2
     y_center = height / 2 - height / 10
-    eye_horizontal = 155
     pygame.init()
     screen = pygame.display.set_mode((width, height), pygame.RESIZABLE)
     screen.fill([100, 200, 200])
@@ -35,7 +34,6 @@ def angry_smiley(FPS=30, width=900, height=700, dia=400):
             if event.type == pygame.QUIT:
                 finished = False
     pygame.quit()
-
 
 
 angry_smiley()
