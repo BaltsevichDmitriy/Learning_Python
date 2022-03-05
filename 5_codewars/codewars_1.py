@@ -43,9 +43,72 @@ def alphabet_position(text):
     return str_num
 
 
-print(alphabet_position("The sunset sets at twelve o' clock."))
+# print(alphabet_position("The sunset sets at twelve o' clock."))
 example = "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11"
 
 
 def duplicate_encode(word):
-    pass
+    """
+    This function is to convert a string to a new string where each character in the new string
+     is "(" if that character appears only once in the original string,
+     or ")" if that character appears more than once in the original string.
+    """
+    list_word = list(word.lower())
+    end_word = ""
+    for counter in range(len(list_word)):
+        count_more_one = 0
+        for i in list_word:
+            if i == list_word[counter]:
+                count_more_one += 1
+                if count_more_one > 1:
+                    break
+        if count_more_one > 1:
+            end_word += ")"
+        else:
+            end_word += "("
+    return end_word
+
+
+# print(duplicate_encode(f"is \")\" if that"))
+
+
+# Мой вариант, математика без рекурсии##########################################
+def nb_year(p0, percent, aug, p):
+    habits = p0
+    count_year = 0
+    while habits < p:
+        habits = habits + habits * (percent / 100) + aug
+        count_year += 1
+    return count_year
+
+
+# Альтернативный подход математика с рекурсией, разобраться!
+def nb_year(p0, percent, aug, p):
+    p0 = p0 + (p0 * (percent / 100)) + aug
+    if p0 < p:
+        return 1 + nb_year(p0, percent, aug, p)
+    else:
+        return 1
+
+
+def nb_year(p0, percent, aug, p, i=0):
+    return i if p0 >= p else nb_year(int(p0 + p0 * (percent / 100) + aug), percent, aug, p, i + 1)
+
+
+# print(nb_year(1000, 2, 50, 12000))
+##################################################################################
+# суть задачи определить, что сумма двух меньших сторон треугольника больше большей стороны
+def is_triangle(a, b, c):
+    """
+    Function that accepts 3 integer values a, b, c.
+    The function should return true if a triangle can be built with the sides of given length
+     and false in any other case.
+    """
+    list_arg = [a, b, c]
+    sum_args = 0
+    if min(list_arg) <= 0:
+        return False
+    if sum(list_arg) - max(list_arg) > max(list_arg):
+        return True
+    else:
+        return False
