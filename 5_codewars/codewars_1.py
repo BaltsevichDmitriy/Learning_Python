@@ -14,7 +14,7 @@ def digital_root(n):
 
 # digital_root(32253465746)
 
-
+###################################################
 def alphabet_position(text):
     """
     This function in a string, replace every letter with its position in the alphabet.
@@ -47,6 +47,7 @@ def alphabet_position(text):
 example = "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11"
 
 
+###################################################
 def duplicate_encode(word):
     """
     This function is to convert a string to a new string where each character in the new string
@@ -71,8 +72,8 @@ def duplicate_encode(word):
 
 # print(duplicate_encode(f"is \")\" if that"))
 
-
-# Мой вариант, математика без рекурсии##########################################
+##################________________#################################
+# Мой вариант, математика без рекурсии######
 def nb_year(p0, percent, aug, p):
     habits = p0
     count_year = 0
@@ -112,3 +113,109 @@ def is_triangle(a, b, c):
         return True
     else:
         return False
+
+
+# альтернотивное решение
+def is_triangle(a, b, c):
+    a, b, c = sorted([a, b, c])
+    return a + b > c
+
+
+################################################################################
+def create_phone_number(n):
+    counter = 0
+    result = "("
+    for i in n:
+        result += str(i)
+        if counter == 2:
+            result += ")"
+            result += " "
+        if counter == 5:
+            result += "-"
+        counter += 1
+    return result
+
+
+# альтернотивный способ
+def create_phone_number(n):
+    n = list(map(str, n))
+    return "({}) {}-{}".format("".join(n[:3]), "".join(n[3:6]), "".join(n[6:10]))
+
+
+# print(create_phone_number([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
+
+##################________________#################################
+
+# Write a function that takes an integer as input, and returns the number
+# of bits that are equal to one in the binary representation of that number.
+# You can guarantee that input is non-negative.
+# Example: The binary representation of 1234 is 10011010010, so the function should return 5 in this case
+def countBits(n):
+    bin_nom = bin(n)
+    result = 0
+    for i in bin_nom[2:]:
+        result += int(i)
+    return result
+
+
+# print(countBits(1234))
+#################################################################
+
+def rot13(message):
+    """
+    nROT13 is a simple letter substitution cipher that replaces a letter with
+    the letter 13 letters after it in the alphabet. ROT13 is an example of the Caesar cipher.
+    """
+    dirty_alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z"
+    f = filter(str.isalpha, dirty_alphabet)
+    alphabet = "".join(f)
+    result = ""
+    for w in message:
+        counter = 0
+        for i in alphabet:
+
+            if i == w.lower() and counter <= 13:
+                if w.isupper():
+                    result += alphabet[counter + 13].upper()
+                    break
+                else:
+                    result += alphabet[counter + 13]
+                    break
+            elif i == w.lower() and counter > 13:
+                if w.isupper():
+                    result += alphabet[counter - 13].upper()
+                    break
+                else:
+                    result += alphabet[counter - 13]
+                    break
+            elif counter == len(alphabet) - 1:
+                result += w
+            counter += 1
+    return result
+
+
+# print(rot13('Test'))###############################################
+
+
+def count_smileys(arr):
+    result = 0
+    for i in arr:
+        if len(i) == 2:
+            if (i[0] == ':' or i[0] == ";") and (i[1] == ')' or i[1] == "D"):
+                result += 1
+        if len(i) == 3:
+            if (i[0] == ':' or i[0] == ";") and (i[1] == '-' or i[1] == "~") and (i[2] == ')' or i[2] == "D"):
+                result += 1
+    return result
+
+
+# print(count_smileys([':D', ':~)', ';~D', ':)']))
+
+
+def find_uniq(arr):
+    len_arr = int(len(arr)/2)
+
+    return int(len(arr)/2)
+
+
+print(find_uniq([ 1, 1, 1,2,1,1 ]))
