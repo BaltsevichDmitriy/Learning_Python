@@ -213,9 +213,66 @@ def count_smileys(arr):
 
 
 def find_uniq(arr):
-    len_arr = int(len(arr)/2)
+    temp = sorted(arr)
+    if temp[len(temp) - 1] == temp[len(temp) - 2]:
+        return temp[0]
+    else:
+        return temp[len(temp) - 1]
 
-    return int(len(arr)/2)
+
+# print(find_uniq([1, 1, 1, 0.5, 1, 1]))
+
+def generate_primes(n):
+    yield (2)
+    primes = [(2, 4)]
+    for m in range(3, n, 2):
+        for prime, square in primes:
+            if square > m:
+                yield (m)
+                primes.append((m, m * m))
+                break
+            if m % prime == 0:
+                break
 
 
-print(find_uniq([ 1, 1, 1,2,1,1 ]))
+def prime_factors(n):
+    string = ""
+    i = 2
+    for i in generate_primes(int(n ** 0.5) + 1):
+        c = 0
+        while True:
+            product, remainder = divmod(n, i)
+            if remainder != 0:
+                break
+            n = product
+            c += 1
+        if c == 1:
+            string += f"({i})"
+        elif c > 1:
+            string += f"({i}**{c})"
+    if n > 1:
+        string += f"({n})"
+
+    return string
+
+
+# print(primeFactors(86240))
+
+
+def productFib(prod):
+    n = 1
+    n_previous = 0
+    if prod == 0:
+        return [0, 1, True]
+    while n * n_previous < prod:
+        n += n_previous
+        n_previous = n - n_previous
+        print(n)
+        if n * n_previous == prod:
+            return[n_previous, n, True]
+        elif n * n_previous >= prod:
+            return[n_previous, n, False]
+
+
+
+print(productFib(0))
